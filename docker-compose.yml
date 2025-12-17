@@ -1,0 +1,26 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: employee_db
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: employee_user
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: employee-app
+    depends_on: 
+      - db
+    environment: 
+      DATABASE_URL: "postgresql://employee_user:password@db:5432/employee_db"
+    working_dir: /app
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:
