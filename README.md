@@ -10,7 +10,7 @@
 
 ```bash
 # Клонируйте репозиторий
-git clone https://github.com/yourusername/employee-db-system.git
+git clone https://github.com/IanZaripov/employee-db-system.git
 cd employee-db-system
 
 # Запуск программы 
